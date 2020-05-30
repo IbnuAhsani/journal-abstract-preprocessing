@@ -12,7 +12,7 @@ stemmer = stemmer_factory.create_stemmer()
 
 def generate_tokens(abstract):
 
-    remove_digits = str.maketrans('', '', string.digits)
+    remove_digits = str.maketrans(string.digits, ' '*len(string.digits))
     remove_punctuations = str.maketrans(string.punctuation, ' '*len(string.punctuation))
 
     abstract_lower_case = abstract.lower()
