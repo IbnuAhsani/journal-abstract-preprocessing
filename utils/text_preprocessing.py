@@ -12,19 +12,18 @@ stemmer = stemmer_factory.create_stemmer()
 
 def generate_tokens(abstract):
 
+    remove_digits = str.maketrans('', '', string.digits)
+    remove_punctuations = str.maketrans(string.punctuation, ' '*len(string.punctuation))
+
     abstract_lower_case = abstract.lower()
     abstract_white_spaces_removed = abstract_lower_case.strip()
-    abstract_numbers_removed = abstract_white_spaces_removed.translate(string.digits)
-    abstract_punctuation_removed = abstract_numbers_removed.translate(string.punctuation)
+    abstract_numbers_removed =  abstract_white_spaces_removed.translate(remove_digits)
+    abstract_punctuation_removed = abstract_numbers_removed.translate(remove_punctuations)
     abstract_stopword_removed = stopword.remove(
         abstract_punctuation_removed)
     abstract_stemmed = stemmer.stem(abstract_stopword_removed)
     abstract_tokens = nltk.word_tokenize(abstract_stemmed)
 
-    final_token = []
+    final_abstract_tokens = [token for token in abstract_tokens if len(token) >= 3]
 
-    for token in abstract_tokens:
-      token_digits_removed = ''.join([i for i in token if not i.isdigit()])
-      final_token.append(token_digits_removed)
-
-    return final_token
+    return final_abstract_tokens
