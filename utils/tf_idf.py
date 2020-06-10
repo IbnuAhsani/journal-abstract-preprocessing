@@ -1,3 +1,6 @@
+import math
+
+
 def calculate_tf(word_dict, token_list):
     tf_dict = {}
     token_list_length = len(token_list)
@@ -10,30 +13,15 @@ def calculate_tf(word_dict, token_list):
     return tf_dict
 
 
-def calculate_idf(documents):
-    num_documents = len(documents)
-    idf_dict = dict.fromkeys(documents[0].keys(), 0)
-
-    for document in documents:
-        for word, val in document.items():
-            if val > 0:
-                idf_dict[word] += 1
-    
-    for word, val in idf_dict.items():
-        idf_dict[word] = 1 + math.log(num_documents / float(val + 1))
-    
-    return idf_dict
-
-
-def calculate_tf_idf(tf, idf):
-    tf_idf = {}
+def calculate_tf_idf(tf):
+    tf_idf_dict = {}
 
     for word, val in tf.items():
-        if val not in idf:
-            word_idf = 1
+        if val == 0:
+            tf_idf = val
         else:
-            word_idf = idf[word]
+            tf_idf = val * math.log(1/2)
 
-        tf_idf[word] = val * word_idf
+        tf_idf_dict[word] = tf_idf
             
-    return tf_idf
+    return tf_idf_dict

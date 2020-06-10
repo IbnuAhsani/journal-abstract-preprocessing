@@ -19,7 +19,7 @@ def main():
     with open(DATA_JSON_DIR) as f:
         datas = json.load(f)
 
-    tf_list = []
+    tf_idf_list = []
 
     for data in datas:
         article_id = data['ARTICLE_ID']
@@ -30,18 +30,19 @@ def main():
             print("processing article_id: ", article_id)
 
         tfs = tf_idf.calculate_tf(fv_token_dict, tokens)
+        tf_idfs = tf_idf.calculate_tf_idf(tfs)
         
-        temp_tf_list = []
+        temp_tf_idf_list = []
 
-        for tf in tfs.values():
-            temp_tf_list.append(tf) 
+        for tfidf in tf_idfs.values():
+            temp_tf_idf_list.append(tfidf) 
         
-        temp_tf_list.append(journal_id)
-        tf_list.append(temp_tf_list)
+        temp_tf_idf_list.append(journal_id)
+        tf_idf_list.append(temp_tf_idf_list)
 
     with open(SAVE_DIR, 'w', newline="") as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_NONE, quotechar='', escapechar='\\')
-        wr.writerows(tf_list)
+        wr.writerows(tf_idf_list)
 
 
 if __name__ == '__main__':
