@@ -18,7 +18,8 @@ def main():
     for row in csv_data:
         JOURNAL_ID, JOURNAL_TITLE, ARTICLE_ID, ARTICLE_TITLE, ARTICLE_ABSTRACT  = row.values()
 
-        print("processing data num: ", current_process_count)
+        if current_process_count % 50 == 0:
+            print("processing data num: ", current_process_count)
 
         tokens = text_preprocessing.generate_tokens(ARTICLE_ABSTRACT)
         tokens_seen = set()
