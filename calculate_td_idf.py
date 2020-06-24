@@ -24,12 +24,12 @@ def main():
     for data in datas:
         article_id = data['ARTICLE_ID']
         journal_id = data['JOURNAL_ID']
-        tokens = data['TOKENS']
+        tokens_dupl_removed = data['TOKENS_DUPLICATE_REMOVED']
 
         if(int(article_id) % 500 == 0):
             print("processing article_id: ", article_id)
 
-        tfs = tf_idf.calculate_tf(fv_token_dict, tokens)
+        tfs = tf_idf.calculate_tf(fv_token_dict, tokens_dupl_removed)
         tf_idfs = tf_idf.calculate_tf_idf(tfs)
         
         temp_tf_idf_list = []
