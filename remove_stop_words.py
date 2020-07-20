@@ -4,8 +4,8 @@ from collections import OrderedDict
 from utils import tf_idf
 
 
-STOP_WORD_DIR = 'data/stop-words.json'
-DATA_JSON_DIR = 'data/data-sample.json'
+STOP_WORD_DIR = './data/input/stop-words.json'
+DATA_JSON_DIR = './data/input/data-sample.json'
 SAVE_DIR = './data/data-sample-stop-words-removed.json'
 
 

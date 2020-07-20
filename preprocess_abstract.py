@@ -2,7 +2,7 @@ import json
 from utils import input_output, text_preprocessing
 
 
-DATASET_DIR = './data/dataset-sample.csv'
+DATASET_DIR = './data/input/dataset-sample.csv'
 SAVE_DIR = './data/preprocessed-dataset-sample.json'
 
 

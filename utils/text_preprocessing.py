@@ -4,9 +4,12 @@ import string
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
 
+STOP_WORD_DIR = './data/input/stop-words.json'
+
+
 def generate_tokens(abstract):
 
-    with open('./data/stop-words.json') as f:
+    with open(STOP_WORD_DIR) as f:
         stop_words = json.load(f)
 
     stemmer_factory = StemmerFactory()

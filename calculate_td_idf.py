@@ -4,8 +4,8 @@ from collections import OrderedDict
 from utils import tf_idf
 
 
-FV_TOKENS_DIR = 'data/fv-tokens.json'
-DATA_JSON_DIR = 'data/data-sample.json'
+FV_TOKENS_DIR = 'data/input/fv-tokens.json'
+DATA_JSON_DIR = 'data/input/data-sample.json'
 SAVE_DIR = './data/tf-idf.csv'
 
 
