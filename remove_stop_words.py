@@ -6,7 +6,7 @@ from utils import tf_idf
 
 STOP_WORD_DIR = './data/input/stop-words.json'
 DATA_JSON_DIR = './data/input/data-sample.json'
-SAVE_DIR = './data/data-sample-stop-words-removed.json'
+SAVE_DIR = './data/output/data-sample-stop-words-removed.json'
 
 
 def main():

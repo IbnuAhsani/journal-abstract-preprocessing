@@ -3,7 +3,7 @@ from utils import input_output, text_preprocessing
 
 
 DATASET_DIR = './data/input/dataset-sample.csv'
-SAVE_DIR = './data/preprocessed-dataset-sample.json'
+SAVE_DIR = './data/output/preprocessed-dataset-sample.json'
 
 
 def main():
