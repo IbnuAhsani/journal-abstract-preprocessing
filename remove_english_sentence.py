@@ -42,11 +42,7 @@ def main():
                 article_abstract_sentences.remove(article_sentence)
                 continue
 
-            if j == 0:
-                article_english_sentence_removed += article_sentence
-            else:
-                article_english_sentence_removed += '. ' + article_sentence
-
+            article_english_sentence_removed += article_sentence + '. '
             j += 1
 
         article = [journal_title, article_title, article_english_sentence_removed]
