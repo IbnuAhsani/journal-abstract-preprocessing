@@ -24,14 +24,15 @@ def main():
     tf_idf_log = []
     tf_idf_list = []
     abstract_num = 1
+    counter = 1
 
     for data in datas:
         article_id = data['ARTICLE_ID']
         journal_id = data['JOURNAL_ID']
         tokens_dupl_removed = data['TOKENS_DUPLICATE_REMOVED']
 
-        if(int(article_id) % 500 == 0):
-            print("processing article_id: ", article_id)
+        if counter % 500 == 0:
+            print("processing article num: ", counter)
 
         idf = math.log10(0.5)
         tfs = tf_idf.calculate_tf(fv_token_dict, tokens_dupl_removed)
@@ -65,6 +66,7 @@ def main():
         tf_idf_list.append(temp_tf_idf_list)
 
         abstract_num += 1
+        counter += 1
 
     with open(TF_IDF_LOG_SAVE_DIR, 'w') as fout:
         json.dump(tf_idf_log , fout, indent=4)
