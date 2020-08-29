@@ -33,8 +33,9 @@ def main():
         if(int(article_id) % 500 == 0):
             print("processing article_id: ", article_id)
 
+        idf = math.log10(0.5)
         tfs = tf_idf.calculate_tf(fv_token_dict, tokens_dupl_removed)
-        tf_idfs = tf_idf.calculate_tf_idf(tfs)
+        tf_idfs = tf_idf.calculate_tf_idf(tfs, idf)
 
         for key in tfs.keys():
             tf_val = tfs[key]
@@ -43,7 +44,7 @@ def main():
             if tf_val == 0:
                 idf_val = 0
             else:
-                idf_val = math.log10(1/2)    
+                idf_val = idf
         
             temp_dict = {
                 "TOKEN": key,

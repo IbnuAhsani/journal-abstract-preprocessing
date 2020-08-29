@@ -13,14 +13,14 @@ def calculate_tf(word_dict, token_list):
     return tf_dict
 
 
-def calculate_tf_idf(tf):
+def calculate_tf_idf(tfs, idf):
     tf_idf_dict = {}
 
-    for word, val in tf.items():
-        if val == 0:
-            tf_idf = val
+    for word, tf in tfs.items():
+        if tf == 0:
+            tf_idf = tf
         else:
-            tf_idf = val * math.log10(1/2)
+            tf_idf = tf * idf 
 
         tf_idf_dict[word] = tf_idf
             
